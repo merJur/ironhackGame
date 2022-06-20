@@ -8,7 +8,7 @@ class Background {
       this.h = this.ctx.canvas.height;
       this.w = this.h * 7.78;
       
-      this.vx = -1;
+      this.vx = -1.5;
     }
   
     draw() {
