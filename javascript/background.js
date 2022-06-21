@@ -4,11 +4,11 @@ class Background {
       this.x = 0;
       this.y = 0;
       this.img = new Image();
-      this.img.src = "/images/bosqueFondoDe.png";
+      this.img.src = "/images/superBosque.png";
       this.h = this.ctx.canvas.height;
-      this.w = this.h * 7.78;
+      this.w = this.h * 14;
       
-      this.vx = -1.5;
+      this.vx = -15;
     }
   
     draw() {
@@ -22,10 +22,13 @@ class Background {
       );
     }
     move() {
-      this.x += this.vx;
-      if (this.x + this.w < 0) {
-        this.x = 0;
+     this.x += this.vx;
+
+   //  if( this.w === 13200 ){
+    //  this.vx = 0;
+    // }
       }
-    }
+
+      
   }
   

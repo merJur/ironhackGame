@@ -52,7 +52,7 @@ class Player {
   }
 
   isJumping() {
-    return this.y < Math.round(FLOOR - this.h)
+    return this.y < Math.round(FLOOR - this.h);
   }
 
   switchAction(key, apply) {
