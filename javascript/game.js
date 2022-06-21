@@ -20,6 +20,7 @@ class Game {
   
     move() {
       this.background.move();
+      this.player.move();
     }
   
     draw() {
