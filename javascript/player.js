@@ -1,8 +1,8 @@
 class Player {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 100;
-    this.y = 300;
+    this.x = 700;
+    this.y = 150;
     this.w = 20;
     this.h = 20;
     this.color = "red";
@@ -19,13 +19,15 @@ class Player {
     this.setListener();
   }
 
-  move() {
-    this.applyActions();
-    this.vy += this.g;
-    this.y += this.vy;
-    this.x += this.vx;
-  }
+  move() {//(canMove) {
+    // if (canMove === true) {
+      this.applyActions();
+      this.vy += this.g;
+      this.y += this.vy;
+      this.x += this.vx;
+    }
 
+   
   setListener() {
     document.onkeydown = (e) => this.switchAction(e.keyCode, true);
     document.onkeyup = (e) => this.switchAction(e.keyCode, false);
