@@ -3,6 +3,7 @@ class Player {
     this.ctx = ctx;
     this.x = 700;
     this.y = 150;
+    this.maxY = 0;
     this.w = 20;
     this.h = 20;
     this.color = "red";

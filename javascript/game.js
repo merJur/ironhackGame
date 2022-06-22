@@ -61,10 +61,18 @@ class Game {
   checkCollisions() {
     if (this.platform.collide(this.player)) {
       console.log("me choco");
-      this.player.y = this.platform.y + this.platform.h;
+      if (this.platform.collideTop(this.player)){
+      console.log('me choco arriba')
+      this.player.maxY = this.platform.y + this.player.h;
+      if ( this.platform.collideBottom(this.player)){
+        console.log('me choco abajo')
+      this.player.maxY = this.platform.y + this.platform.h;
+    } 
     }
+  } else {
+    this.player.maxY = FLOOR;
   }
-
+  }
 
 
   draw() {
