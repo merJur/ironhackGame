@@ -3,7 +3,6 @@ class Player {
     this.ctx = ctx;
     this.x = 700;
     this.y = 150;
-    this.maxY = 0;
     this.w = 20;
     this.h = 20;
     this.color = "red";
@@ -20,15 +19,15 @@ class Player {
     this.setListener();
   }
 
-  move()/*canMove) {
-     if (canMove === true) */{{
+  move(){
       this.applyActions();
       this.vy += this.g;
       this.y += this.vy;
       this.x += this.vx;
+     
     }
 
-  }
+  
   setListener() {
     document.onkeydown = (e) => this.switchAction(e.keyCode, true);
     document.onkeyup = (e) => this.switchAction(e.keyCode, false);
@@ -52,7 +51,8 @@ class Player {
     if (this.actions.jump && !this.isJumping()) {
       this.vy -= 15;
     }
-  }
+  } 
+
 
   isJumping() {
     return this.y < Math.round(FLOOR - this.h);

@@ -8,7 +8,33 @@ class Background {
     this.h = this.ctx.canvas.height;
     this.w = this.h * 17;
 
-    this.vx = 0;
+    this.vx = -2;
+    this.setListener();
+  }
+
+
+move() {
+  if (this.switchAction(RIGHT)){
+    this.x += this.vx
+    if(this.x + this.w <= 0) {
+      this.x = 0
+    }
+  }
+}
+
+
+  setListener() {
+    document.onkeydown = (e) => this.switchAction(e.keyCode, true);
+    document.onkeyup = (e) => this.switchAction(e.keyCode, false);
+  }
+
+  switchAction(key, apply){
+    switch ( key) {
+      case RIGHT:
+        this.vx = apply;
+        break;
+    }
+
   }
 
   draw() {

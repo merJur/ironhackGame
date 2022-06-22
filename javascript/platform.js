@@ -18,7 +18,7 @@ class Platform {
     return collideX && collideY;
   }
   collideTop(player){
-    return player.y + player.h > this.y && player.y + player.h > this.y + this.h
+    return player.y + player.h > this.y && player.y + player.h < this.y + this.h
   }
   collideBottom(player) {
     return player.y < this.y + this.h && player.y > this.y
