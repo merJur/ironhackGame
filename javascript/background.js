@@ -6,7 +6,7 @@ class Background {
     this.img = new Image();
     this.img.src = "/images/superBosque.png";
     this.h = this.ctx.canvas.height;
-    this.w = this.h * 14;
+    this.w = this.h * 17;
 
     this.vx = 0;
   }
@@ -21,13 +21,5 @@ class Background {
       this.h
     );
   }
-  move(direccion) {
-    if (direccion === "izq") {
-      this.vx = 2;
-    }
-    if (direccion === "der") {
-      this.vx = -2;
-    } 
-    this.x += this.vx;
-  }
+ 
 }

@@ -19,15 +19,15 @@ class Player {
     this.setListener();
   }
 
-  move() {//(canMove) {
-    // if (canMove === true) {
+  move()/*canMove) {
+     if (canMove === true) */{{
       this.applyActions();
       this.vy += this.g;
       this.y += this.vy;
       this.x += this.vx;
     }
 
-   
+  }
   setListener() {
     document.onkeydown = (e) => this.switchAction(e.keyCode, true);
     document.onkeyup = (e) => this.switchAction(e.keyCode, false);
@@ -37,7 +37,7 @@ class Player {
     if (this.actions.right) {
       this.vx += 1;
     } else if (this.actions.left) {
-      this.vx += -1;
+      this.vx -= 1;
     } else {
       this.vx = 0;
     }
