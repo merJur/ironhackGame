@@ -4,20 +4,21 @@ class Game {
     this.intervalId = null;
     this.background = new Background(this.ctx);
     this.player = new Player(this.ctx);
-   this.platform = new Platform(this.ctx);
-   
+    this.platform = new Platform(this.ctx);
+
     this.fire = [];
     this.tickFire = 0;
   }
 
   start() {
     this.intervalId = setInterval(() => {
+      this.checkCollisions();
       this.clear();
       this.draw();
       this.move();
-      this.checkCollisions();
+
       this.tickFire++;
-      if ( this.tickFire % 80 === 0) {
+      if (this.tickFire % 80 === 0) {
         this.addFire();
       }
     }, 1000 / 60);
@@ -37,22 +38,21 @@ class Game {
     this.fire.forEach((fire) => fire.draw());
   }
 
-   checkCollisions() {
-   if (this.platform.collide(this.player)) {
-      console.log("me choco");
+  checkCollisions() {
+    // platform collisions
+    if (this.platform.collide(this.player)) {
       if (this.platform.collideTop(this.player)) {
-        console.log("me choco arriba");
-        this.player.y; // = ??????????? // no funciona esta línea, atraviesa la platform, en lugar de quedarse sobre ella
-      
-      
-      } else if (this.platform.collideBottom(this.player)) { //collideBottom funciona bien, no tocar!!!!!!!
-        console.log("me choco abajo");
+        this.player.vy = 0;
+        this.player.y = Math.round(PLATFLOOR - this.player.h);
+      } else if (this.platform.collideBottom(this.player)) {
         this.player.y = this.platform.y + this.platform.h;
       }
     }
-    const playerVsFire = this.fire.find((fire) =>{
-      return fire.collide(this.player)
-    })
+
+    // fire collisions
+    const playerVsFire = this.fire.find((fire) => {
+      return fire.collide(this.player);
+    });
     if (playerVsFire) {
       console.log("me quemo");
       this.gameOver();
@@ -75,6 +75,6 @@ class Game {
     this.background.draw();
     this.player.draw();
     this.platform.draw();
-    this.fire.forEach((obs) =>obs.draw());
+    this.fire.forEach((obs) => obs.draw());
   }
 }

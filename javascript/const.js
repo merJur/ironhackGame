@@ -4,3 +4,4 @@ const LEFT = 65;
 const RIGHT = 68;
 const SPACE = 32;
 const FLOOR = 400;
+const PLATFLOOR = 320;

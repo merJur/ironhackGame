@@ -9,8 +9,6 @@ class Player {
     this.color = "red";
     this.vx = 0;
     this.vy = 0;
-    
-    
 
     this.actions = {
       left: false,
@@ -22,17 +20,13 @@ class Player {
     this.setListener();
   }
 
-  move(){
-      this.applyActions();
-      this.vy += this.g;
-      this.y += this.vy;
-      this.x += this.vx;
-     
-      }
-     
-    
+  move() {
+    this.applyActions();
+    this.vy += this.g;
+    this.y += this.vy;
+    this.x += this.vx;
+  }
 
-  
   setListener() {
     document.onkeydown = (e) => this.switchAction(e.keyCode, true);
     document.onkeyup = (e) => this.switchAction(e.keyCode, false);
@@ -52,12 +46,14 @@ class Player {
       this.y = Math.round(FLOOR - this.h);
     }
 
-
     if (this.actions.jump && !this.isJumping()) {
       this.vy -= 15;
     }
-  } 
 
+    if (this.y + this.h === PLATFLOOR && (this.actions.jump && !this.isJumping())) {
+      this.vy -= 15;
+    }
+  }
 
   isJumping() {
     return this.y < Math.round(FLOOR - this.h);
