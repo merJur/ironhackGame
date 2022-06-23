@@ -8,17 +8,29 @@
   color: red;
 }
 
-body{
-    background-image: url(./images/imagenfondohtml.webp);
-    background-size: cover;
-    height: 800px;
+body {
+  background-image: url(./images/imagenfondohtml.webp);
+  background-size: cover;
 }
 
-.text{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    
-   
+h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 2px grey;
+}
+
+.text {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(48, 160, 125);
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  border: 1px solid white;
+  margin-left: 600px;
+  margin-right: 600px;
+  margin-top: 0%;
+  margin-bottom: 0.5%;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }

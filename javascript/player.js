@@ -3,11 +3,14 @@ class Player {
     this.ctx = ctx;
     this.x = 700;
     this.y = 150;
+    this.maxY = 340;
     this.w = 20;
     this.h = 20;
     this.color = "red";
     this.vx = 0;
     this.vy = 0;
+    
+    
 
     this.actions = {
       left: false,
@@ -25,7 +28,9 @@ class Player {
       this.y += this.vy;
       this.x += this.vx;
      
-    }
+      }
+     
+    
 
   
   setListener() {

@@ -8,34 +8,19 @@ class Background {
     this.h = this.ctx.canvas.height;
     this.w = this.h * 17;
 
-    this.vx = -2;
-    this.setListener();
+    this.vx = -1.5;
+    
   }
 
 
 move() {
-  if (this.switchAction(RIGHT)){
-    this.x += this.vx
-    if(this.x + this.w <= 0) {
-      this.x = 0
-    }
-  }
+  this.x += this.vx
+
+ 
 }
 
 
-  setListener() {
-    document.onkeydown = (e) => this.switchAction(e.keyCode, true);
-    document.onkeyup = (e) => this.switchAction(e.keyCode, false);
-  }
-
-  switchAction(key, apply){
-    switch ( key) {
-      case RIGHT:
-        this.vx = apply;
-        break;
-    }
-
-  }
+ 
 
   draw() {
     this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);

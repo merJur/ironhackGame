@@ -6,12 +6,12 @@ class Platform {
     this.w = 70;
     this.h = 25;
     this.color = "black";
-    this.vx = 0;
+    this.vx = -2;
     this.img = new Image();
     this.img.src= "images/plataforma.png"
   }
 
-  collide(player) {
+  collide(player) { //esto funciona bien
     const collideX = player.x + player.w > this.x && player.x < this.x + this.w;
     const collideY = player.y < this.y + this.h && player.y + player.h > this.y;
 
@@ -23,8 +23,9 @@ class Platform {
   collideBottom(player) {
     return player.y < this.y + this.h && player.y > this.y
   }
-
-
+move (){ //no desaparece la plataforma del canvas
+  this.x = this.vx
+}
 
   draw() {
     this.ctx.drawImage(
