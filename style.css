@@ -1,11 +1,27 @@
 #canvas {
   border: 2px solid black;
   margin-top: 100px;
-  margin-left: 300px;
+  margin-left: 420px;
 }
 
+
+.btn{
+  margin-left: 820px;
+  margin-right: 600px;
+  margin-top: 1%;
+  margin-bottom: 0.5%;
+ 
+}
 .startbtn {
-  color: red;
+  color: white;
+  background-color: rgb(48, 160, 125);
+  border: 1px solid white;
+  padding-left: 100px;
+  padding-top: 15px;
+  padding-right: 100px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+
 }
 
 body {
@@ -17,7 +33,7 @@ h1 {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: white;
   text-align: center;
-  text-shadow: 1px 1px 2px grey;
+  text-shadow: 2px 5px 2px grey;
 }
 
 .text {
