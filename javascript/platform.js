@@ -1,12 +1,12 @@
 class Platform {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = Math.random() * 500 + 200;
+    this.x = 999;
     this.y = 320;
     this.w = 70;
     this.h = 25;
     this.color = "black";
-    this.vx = -2;
+    this.vx = -3;
     this.img = new Image();
     this.img.src= "images/plataformas2.png"
   }
@@ -23,8 +23,8 @@ class Platform {
   collideBottom(player) {
     return player.y < this.y + this.h && player.y > this.y
   }
-move (){ //no desaparece la plataforma del canvas
-  this.x = this.vx
+move (){ 
+  this.x += this.vx
 }
 
   draw() {

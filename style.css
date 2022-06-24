@@ -1,16 +1,17 @@
 #canvas {
   border: 2px solid black;
-  margin-top: 100px;
-  margin-left: 420px;
-}
-
-
-.btn{
-  margin-left: 820px;
-  margin-right: 600px;
-  margin-top: 1%;
-  margin-bottom: 0.5%;
+  border-radius: 5px;
  
+}
+.colocaCanvas{
+  margin-top: 50px;
+  display: flex;
+  justify-content:center ;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 .startbtn {
   color: white;
@@ -21,13 +22,12 @@
   padding-right: 100px;
   padding-bottom: 15px;
   border-radius: 5px;
-  
-
 }
 
 body {
   background-image: url(./images/imagenfondohtml.webp);
   background-size: cover;
+  
 }
 
 h1 {
@@ -50,4 +50,5 @@ h1 {
   margin-bottom: 0.5%;
   padding-top: 3px;
   padding-bottom: 3px;
+  border-radius: 5px;
 }

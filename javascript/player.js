@@ -3,7 +3,6 @@ class Player {
     this.ctx = ctx;
     this.x = 700;
     this.y = 150;
-    this.maxY = 340;
     this.w = 20;
     this.h = 20;
     this.color = "red";
@@ -25,6 +24,8 @@ class Player {
     this.vy += this.g;
     this.y += this.vy;
     this.x += this.vx;
+
+ 
   }
 
   setListener() {
@@ -50,9 +51,8 @@ class Player {
       this.vy -= 15;
     }
 
-    if (this.y + this.h === PLATFLOOR && (this.actions.jump && !this.isJumping())) {
-      this.vy -= 15;
-    }
+
+    
   }
 
   isJumping() {

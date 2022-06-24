@@ -11,6 +11,9 @@ window.onload = () => {
   function startGame() {
     if (game.intervalId === null) {
       game.start();
+    } else {
+      game.score();
+      game.stop();
     }
   }
 };
