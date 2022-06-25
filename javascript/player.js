@@ -1,13 +1,19 @@
 class Player {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 700;
+    this.x = 500;
     this.y = 150;
-    this.w = 20;
-    this.h = 20;
+    this.maxY = 320;
+
+    this.prevY = this.y;
+
+    this.w = 50;
+    this.h = 60;
     this.color = "red";
     this.vx = 0;
     this.vy = 0;
+    this.img = new Image();
+    this.img.src = "/images/rabbit.png";
 
     this.actions = {
       left: false,
@@ -50,9 +56,12 @@ class Player {
     if (this.actions.jump && !this.isJumping()) {
       this.vy -= 15;
     }
-
-
     
+    if (this.y >= this.maxY) {
+      this.y = this.maxY;
+      this.jumping = 0;
+
+  }
   }
 
   isJumping() {
@@ -71,11 +80,40 @@ class Player {
         this.actions.jump = apply;
     }
   }
+  collidesWithPlatform(platform) {
+    const xPadding = 10;
+    const yPadding = 20;
 
-  draw() {
-    this.ctx.beginPath();
-    this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x, this.y, this.w, this.h);
-    this.ctx.closePath();
+    if(this.vy >= 0 &&
+    this.x + this.w / 2 + xPadding < platform.x + platform.w &&
+    this.x + this.w - this.w / 2 > platform.x &&
+    this.y + this.h >= platform.y + yPadding &&
+    this.prevY + this.h <= platform.y + yPadding ||
+    this.maxY === platform.y - this.h + yPadding &&
+    this.x + this.w / 2 + xPadding < platform.x + platform.w &&
+    this.x + this.w - this.w / 2 > platform.x) {
+
+    return true;
+    }
   }
+
+  getOnPlatform(platformY){
+  this.maxY = platformY - this.h}
+
+  getOnFloor(){
+    if (this-maxY !== 320){
+      this.vy = 0;
+      this.maxY = 320
+    }
+  }
+  draw() {
+        
+    this.ctx.drawImage(
+     this.img,
+     this.x,
+     this.y,
+     this.w,
+     this.h
+   )
+ }
 }

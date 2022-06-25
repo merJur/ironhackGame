@@ -3,7 +3,7 @@ class Platform {
     this.ctx = ctx;
     this.x = 999;
     this.y = 320;
-    this.w = 70;
+    this.w = 300;
     this.h = 25;
     this.color = "black";
     this.vx = -3;

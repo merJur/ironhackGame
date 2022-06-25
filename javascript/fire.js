@@ -1,15 +1,15 @@
 class Fire {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 999;
+    this.x = 1100;
     this.y = 360;
     this.h = 45;
     this.w = 45;
     this.color = "orange";
     this.img = new Image();
-    this.img.src = "/images/hogueras.png";
-    this.img.frame = 4;
-    this.img.frameIndex = 0;
+    this.img.src = "/images/hoguera.png";
+  //  this.img.frame = 4;
+  //  this.img.frameIndex = 0;
     this.tick = 0;
     this.vx = 2.5;
   }
@@ -23,20 +23,22 @@ class Fire {
 
     return collideX && collideY;
   }
+
+
+
   draw() {
+        
     this.ctx.drawImage(
-      this.img,
-      this.img.frameIndex * this.img.width / this.img.frames,
-      0,
-      this.img.width / this.img.frames,
-      this.img.height,
-      this.x,
-      this.y,
-      this.w,
-      this.h)
+     this.img,
+     this.x,
+     this.y,
+     this.w,
+     this.h
+   )
+ }
   }
 
-  animate() {
+/*  animate() {
     this.tick++;
 
     if (this.tick > 10) {
@@ -50,5 +52,5 @@ class Fire {
     if (this.img.frameIndex >= this.img.frames) {
       this.img.frameIndex = 0;
     }
-  }
-}
+  }*/
+
