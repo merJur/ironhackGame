@@ -12,7 +12,7 @@ class Fire {
   //  this.img.frameIndex = 0;
     this.tick = 0;
     this.vx = 2.5;
-    this.score = 0;
+   // this.score = 0;
   }
   move() {
     this.x -= this.vx;
@@ -38,8 +38,8 @@ class Fire {
    )
  }
   }
-
-/*  animate() {
+/*
+  animate() {
     this.tick++;
 
     if (this.tick > 10) {
@@ -52,6 +52,6 @@ class Fire {
 
     if (this.img.frameIndex >= this.img.frames) {
       this.img.frameIndex = 0;
-    }
-  }*/
+    }*/
+  
 

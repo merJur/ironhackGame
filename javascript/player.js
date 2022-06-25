@@ -43,13 +43,13 @@ class Player {
       this.vx = 0;
     }
 
-    if (this.y + this.h >= FLOOR) {
+    if (this.y + this.h >= this.maxY) {
       this.vy = 0;
-      this.y = Math.round(FLOOR - this.h);
+      this.y = Math.round(this.maxY - this.h);
     }
 
     if (this.actions.jump && !this.isJumping()) {
-      this.vy -= 25;
+      this.vy -= 15;
     }
 
 

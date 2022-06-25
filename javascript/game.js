@@ -30,6 +30,7 @@ class Game {
       this.tickPlatform++;
       this.tickMedium ++;
       this.score();
+    //  this.animate();
       if (this.tickFire % 130 === 0) {
         this.addFire();
       }
@@ -74,6 +75,7 @@ class Game {
     this.platform.forEach((plat) => {
       if (plat.collide(this.player)) {
         if (plat.collideTop(this.player)) {
+          console.log('cildeplatform')
           this.player.vy = 0;
           this.player.y = Math.round(plat.y - this.player.h);
           this.player.maxY = plat.y;
@@ -89,6 +91,7 @@ class Game {
     this.medium.forEach((plat) => {
       if (plat.collide(this.player)) {
         if (plat.collideTop(this.player)) {
+          console.log('colidemedium')
           this.player.vy = 0;
           this.player.y = Math.round(plat.y - this.player.h);
           this.player.maxY = plat.y;
