@@ -12,6 +12,7 @@ class Fire {
   //  this.img.frameIndex = 0;
     this.tick = 0;
     this.vx = 2.5;
+    this.score = 0;
   }
   move() {
     this.x -= this.vx;
