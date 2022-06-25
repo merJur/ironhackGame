@@ -4,11 +4,9 @@ class Game {
     this.intervalId = null;
     this.background = new Background(this.ctx);
     this.player = new Player(this.ctx);
-    // this.platform = new Platform(this.ctx);
     this.points = 0;
-   // this.medium = new Medium(this.ctx);
-    //  this.bear = new Bear(this.ctx)
-     // this.bear2 = new Bear2(this.ctx)
+    this.bear = new Bear(this.ctx);
+    this.bear2 = new Bear2(this.ctx);
 
     this.platform = [new Platform(this.ctx)];
     this.tickPlatform = 0;
@@ -18,6 +16,9 @@ class Game {
 
     this.medium = [new Medium(this.ctx)];
     this.tickMedium = 0;
+
+    this.carrots = [];
+    this.tickCarrots = 0;
   }
 
   start() {
@@ -28,19 +29,24 @@ class Game {
       this.move();
       this.tickFire++;
       this.tickPlatform++;
-      this.tickMedium ++;
+      this.tickMedium++;
+      this.tickCarrots ++;
       this.score();
-    //  this.animate();
+
       if (this.tickFire % 130 === 0) {
         this.addFire();
       }
 
-      if (this.tickPlatform % 1500 === 0) {
+      if (this.tickPlatform % 700 === 0) {
         this.addPlatform();
       }
 
-      if (this.tickMedium % 1400 === 0){
+      if (this.tickMedium % 230 === 0) {
         this.addMedium();
+      }
+
+      if (this.tickCarrots % 180 === 0) {
+        this.addCarrots();
       }
     }, 1000 / 60);
   }
@@ -52,8 +58,12 @@ class Game {
   addPlatform() {
     this.platform.push(new Platform(this.ctx));
   }
-  addMedium(){
+  addMedium() {
     this.medium.push(new Medium(this.ctx));
+  }
+
+  addCarrots() {
+    this.carrots.push(new Carrots(this.ctx));
   }
 
   clear() {
@@ -65,41 +75,27 @@ class Game {
     this.player.move();
     this.fire.forEach((fire) => fire.move());
     this.platform.forEach((plat) => plat.move());
-  //  this.bear.move();
-  //  this.bear2.move();
+    this.bear.move();
+    this.bear2.move();
     this.medium.forEach((plat) => plat.move());
+    this.carrots.forEach((carrot) => carrot.move());
   }
 
   checkCollisions() {
-    // platform (platform y= 320) collisions
-    this.platform.forEach((plat) => {
+    // platform collisions
+    const platforms = this.platform.concat(this.medium);
+    if (!platforms.some((plat) => plat.collide(this.player))) {
+      this.player.maxY = FLOOR;
+    }
+    platforms.forEach((plat) => {
       if (plat.collide(this.player)) {
         if (plat.collideTop(this.player)) {
-          console.log('cildeplatform')
           this.player.vy = 0;
           this.player.y = Math.round(plat.y - this.player.h);
           this.player.maxY = plat.y;
         } else if (plat.collideBottom(this.player)) {
           this.player.y = plat.y + plat.h;
         }
-      } else {
-        this.player.maxY = FLOOR;
-      }
-    });
-
-    //mediumPlatform (medium y= 200) collision
-    this.medium.forEach((plat) => {
-      if (plat.collide(this.player)) {
-        if (plat.collideTop(this.player)) {
-          console.log('colidemedium')
-          this.player.vy = 0;
-          this.player.y = Math.round(plat.y - this.player.h);
-          this.player.maxY = plat.y;
-        } else if (plat.collideBottom(this.player)) {
-          this.player.y = plat.y + plat.h;
-        }
-      } else {
-        this.player.maxY = FLOOR;
       }
     });
 
@@ -109,27 +105,29 @@ class Game {
     });
     if (playerVsFire) {
       this.gameOver();
-    //  this.stop();
-    } else {
-      this.points++;
+   
     }
 
     //bear collisions
-
-   /*  if (this.bear.collide(this.player)) {
+    if (this.bear.collide(this.player)) {
       this.gameOver();
-      this.stop();
-    } else {
-      this.points ++;
+   
     }
 
     //bear2 collision
     if (this.bear2.collide(this.player)) {
       this.gameOver();
-      this.stop();
-    } else {
-      this.points ++;
-    }*/
+     
+    }
+
+    //carrots collision
+    const collideCarrots = this.carrots.find((carrots) => {
+      return carrots.collide(this.player);
+    });
+    if (collideCarrots) {
+      this.pints +5;
+      console.log('zanahorias')
+    }
   }
   gameOver() {
     clearInterval(this.intervalId);
@@ -145,25 +143,21 @@ class Game {
     );
   }
 
-  stop() {
-    if (this.gameOver()) {
-      this.intervalId === null;
-    }
-  }
   draw() {
     this.background.draw();
     this.player.draw();
     this.platform.forEach((obs) => obs.draw());
     this.fire.forEach((obs) => obs.draw());
-    // this.bear.draw();
-    // this.bear2.draw();
-    this.medium.forEach((obs) => obs.draw())
+    this.bear.draw();
+    this.bear2.draw();
+    this.medium.forEach((obs) => obs.draw());
+    this.carrots.forEach((carrot) => carrot.draw());
   }
-  
- score() {
+
+  score() {
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "white";
     this.ctx.textAlign = "center";
-    this.ctx.fillText('Score: ${this.points}', 300, 100);
+    this.ctx.fillText('Score: ${this.points}', 500, 70);
   }
 }

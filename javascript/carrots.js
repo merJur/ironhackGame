@@ -1,19 +1,21 @@
-class Bear2 {
+class Carrots {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 3200;
-    this.y = 400 - 200;
-    this.w = 150;
-    this.h = 200;
-    this.color = "grey";
+    this.x = 1200;
+    this.y = 100;
+    this.w = 20;
+    this.h = 20;
+    this.color = 'pink'
     this.img = new Image();
-    this.img.src = "/images/bear.png";
-
-    this.vx = -3;
+    this.img.src = "/images/carrot.png";
+    this.tick = 0;
+    this.vx = 2.5;
   }
-
   move() {
-    this.x += this.vx;
+    this.x -= this.vx;
+  }
+  draw() {
+    this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
   }
 
   collide(player) {
@@ -21,8 +23,5 @@ class Bear2 {
     const collideY = player.y < this.y + this.h && player.y + player.h > this.y;
 
     return collideX && collideY;
-  }
-  draw() {
-    this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
   }
 }

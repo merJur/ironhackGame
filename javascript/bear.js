@@ -2,9 +2,9 @@ class Bear{
     constructor(ctx){
         this.ctx = ctx;
         this.x = 650;
-        this.y =(400 -220);
+        this.y =(400 -200);
         this.w = 150;
-        this.h = 220;
+        this.h = 200;
         this.color='grey';
         this.img = new Image();
         this.img.src = '/images/bear.png';
