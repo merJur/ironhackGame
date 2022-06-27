@@ -7,6 +7,11 @@ class Game {
     this.points = 0;
     this.bear = new Bear(this.ctx);
     this.bear2 = new Bear2(this.ctx);
+    this.bear3 = new Bear3(this.ctx);
+    this.bear4 = new Bear4(this.ctx);
+    this.bear5 = new Bear5(this.ctx);
+    this.endGame = new EndGame(this.ctx);
+    this.platformbonus = new Platformbonus(this.ctx);
 
     this.platform = [new Platform(this.ctx)];
     this.tickPlatform = 0;
@@ -23,6 +28,7 @@ class Game {
 
   start() {
     this.intervalId = setInterval(() => {
+      this.currenTime;
       this.clear();
       this.draw();
       this.checkCollisions();
@@ -30,8 +36,11 @@ class Game {
       this.tickFire++;
       this.tickPlatform++;
       this.tickMedium++;
-      this.tickCarrots ++;
+      this.tickCarrots++;
+      this.points;
       this.score();
+     
+      this.printTime();
 
       if (this.tickFire % 130 === 0) {
         this.addFire();
@@ -63,7 +72,7 @@ class Game {
   }
 
   addCarrots() {
-    this.carrots.push(new Carrots(this.ctx));
+    this.carrots.push(new Carrots(this.ctx, true));
   }
 
   clear() {
@@ -77,13 +86,18 @@ class Game {
     this.platform.forEach((plat) => plat.move());
     this.bear.move();
     this.bear2.move();
+    this.bear3.move();
+    this.bear4.move();
+    this.bear5.move();
     this.medium.forEach((plat) => plat.move());
     this.carrots.forEach((carrot) => carrot.move());
+    this.endGame.move();
+    this.platformbonus.move();
   }
-
   checkCollisions() {
     // platform collisions
     const platforms = this.platform.concat(this.medium);
+    platforms.push(this.platformbonus);
     if (!platforms.some((plat) => plat.collide(this.player))) {
       this.player.maxY = FLOOR;
     }
@@ -105,42 +119,85 @@ class Game {
     });
     if (playerVsFire) {
       this.gameOver();
-   
     }
 
     //bear collisions
     if (this.bear.collide(this.player)) {
       this.gameOver();
-   
     }
 
     //bear2 collision
     if (this.bear2.collide(this.player)) {
       this.gameOver();
-     
+    }
+    //bear3 collision
+    if (this.bear3.collide(this.player)) {
+      this.gameOver();
     }
 
+    //bear4 collision
+    if (this.bear4.collide(this.player)) {
+      this.gameOver();
+    }
+
+    //bear5 collision
+    if (this.bear5.collide(this.player)) {
+      this.gameOver();
+    }
     //carrots collision
     const collideCarrots = this.carrots.find((carrots) => {
       return carrots.collide(this.player);
     });
+    
     if (collideCarrots) {
-      this.pints +5;
-      console.log('zanahorias')
+      this.carrots = this.carrots.filter(carrot => carrot !== collideCarrots)
+      console.log("zanahorias");
+      console.log(this.points);
+      this.points += 5;
+    }
+
+    //endGame collision
+    if (this.endGame.collide(this.player)) {
+      this.youWin();
     }
   }
+
+
+  printTime() {
+    this.ctx.font = "20px Verdana";
+    this.ctx.fillStyle = "white";
+    this.ctx.textAlign = "center";
+    this.ctx.fillText(
+      "Time:" + " " + "this.printMinutes()" + ":" + "this.printSeconds()",
+      250,
+      70
+    );
+  }
+
+  youWin() {
+    clearInterval(this.intervalId);
+    this.intervalId = null;
+    this.ctx.font = "100px Verdana";
+    this.ctx.fillStyle = "white";
+    this.ctx.textAlign = "center";
+    this.ctx.fillText("You win!!!!", 500, 250);
+  }
+
   gameOver() {
     clearInterval(this.intervalId);
     this.intervalId = null;
-
-    this.ctx.font = "25 px Arial";
-    this.ctx.fillStyle = "green";
+    this.ctx.font = "  100px Verdana ";
+    this.ctx.strokeStyle = "black";
+    this.ctx.fillStyle = "white";
     this.ctx.textAlign = "center";
-    this.ctx.fillText(
-      "Ohhh, you die!",
-      this.ctx.canvas.width / 2,
-      this.ctx.canvas.heigth / 2
-    );
+    this.ctx.fillText("Ohhh, you die!", 500, 250);
+    this.ctx.strokeText("Ohhh, you die!", 500, 250);
+  }
+  score() {
+    this.ctx.font = "20px Verdana";
+    this.ctx.fillStyle = "white";
+    this.ctx.textAlign = "center";
+    this.ctx.fillText("Score:" + " " + this.points, 510, 70);
   }
 
   draw() {
@@ -150,14 +207,12 @@ class Game {
     this.fire.forEach((obs) => obs.draw());
     this.bear.draw();
     this.bear2.draw();
+    this.bear3.draw();
+    this.bear4.draw();
+    this.bear5.draw();
     this.medium.forEach((obs) => obs.draw());
     this.carrots.forEach((carrot) => carrot.draw());
-  }
-
-  score() {
-    this.ctx.font = "20px Arial";
-    this.ctx.fillStyle = "white";
-    this.ctx.textAlign = "center";
-    this.ctx.fillText('Score: ${this.points}', 500, 70);
+    this.endGame.draw();
+    this.platformbonus.draw();
   }
 }

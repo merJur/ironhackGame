@@ -6,6 +6,7 @@ const startBtn = document.querySelector(".startbtn");
 window.onload = () => {
   document.querySelector(".startbtn").onclick = () => {
     startGame();
+   
   };
 
   function startGame() {
@@ -16,4 +17,5 @@ window.onload = () => {
     // game.stop();
     }
   }
-};
+}
+

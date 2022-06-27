@@ -1,15 +1,15 @@
-class Bear2 {
+class Bear3 {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 3600;
-    this.y = 300;
-    this.w = 120;
-    this.h = 100;
+    this.x = 5000;
+    this.y = 200;
+    this.w = 100;
+    this.h = 200;
     this.color = "grey";
-  //  this.img = new Image();
-  //  this.img.src = "/images/bear.png";
+ //   this.img = new Image();
+ //   this.img.src = "/images/bear.png";
 
-    this.vx = -3;
+    this.vx = -2.2;
   }
 
   move() {
@@ -22,11 +22,12 @@ class Bear2 {
 
     return collideX && collideY;
   }
-  
+
+ 
   draw() {
     this.ctx.beginPath();
     this.ctx.fillStyle = this.color
     this.ctx.fillRect(this.x, this.y, this.w, this.h)
     this.ctx.closePath();
-  }
+}
 }

@@ -6,3 +6,5 @@ const SPACE = 32;
 const FLOOR = 400;
 const PLATFLOOR = 320;
 const MEDIUMFLOOR = 200;
+const RIGHTLIMIT = 975;
+const LEFTLIMIT = 25;

@@ -2,13 +2,11 @@
 
 errores:
 
-- player encima de la plataforma ok: ahora no funciona el salto al haber quitado la aceleración en ese punto.
 
--si hago array de plataformas. la checkcollision no funciona. la plataforma no se pinta bien, se pinta como una línea seguida.
 
 - trabajando en el sprite de Fire. NO SE PINTA NINGUN FIRE!!
 
--filltext de score is not a function y no se pinta el score
+
 
   
 
