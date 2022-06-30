@@ -12,18 +12,21 @@ class Game {
     this.bear5 = new Bear5(this.ctx);
     this.endGame = new EndGame(this.ctx);
     this.platformbonus = new Platformbonus(this.ctx);
-
     this.platform = [new Platform(this.ctx)];
     this.tickPlatform = 0;
-
     this.fire = [];
     this.tickFire = 0;
-
     this.medium = [new Medium(this.ctx)];
     this.tickMedium = 0;
-
     this.carrots = [];
     this.tickCarrots = 0;
+    this.carrots2 = [];
+    this.tickCarrots2 = 0;
+    this.carrots3 = [];
+    this.tickCarrots3 = 0;
+    this.sound = new Audio();
+    this.sound.src = "/sounds/go.mp3"
+
   }
 
   start() {
@@ -37,25 +40,30 @@ class Game {
       this.tickPlatform++;
       this.tickMedium++;
       this.tickCarrots++;
+      this.tickCarrots2++;
+      this.tickCarrots3++;
       this.points;
       this.score();
      
-      this.printTime();
+      //    this.printTime();
 
-      if (this.tickFire % 130 === 0) {
+      if (this.tickFire % 198 === 0) {
         this.addFire();
       }
-
       if (this.tickPlatform % 700 === 0) {
         this.addPlatform();
       }
-
-      if (this.tickMedium % 230 === 0) {
+      if (this.tickMedium % 220 === 0) {
         this.addMedium();
       }
-
       if (this.tickCarrots % 180 === 0) {
         this.addCarrots();
+      }
+      if (this.tickCarrots2 % 300 === 0) {
+        this.addCarrots2();
+      }
+      if (this.tickCarrots3 % 800 === 0) {
+        this.addCarrots3();
       }
     }, 1000 / 60);
   }
@@ -72,9 +80,14 @@ class Game {
   }
 
   addCarrots() {
-    this.carrots.push(new Carrots(this.ctx, true));
+    this.carrots.push(new Carrots(this.ctx));
   }
-
+  addCarrots2() {
+    this.carrots2.push(new Carrots2(this.ctx));
+  }
+  addCarrots3() {
+    this.carrots3.push(new Carrots3(this.ctx));
+  }
   clear() {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.heigth);
   }
@@ -91,6 +104,8 @@ class Game {
     this.bear5.move();
     this.medium.forEach((plat) => plat.move());
     this.carrots.forEach((carrot) => carrot.move());
+    this.carrots2.forEach((carrot) => carrot.move());
+    this.carrots3.forEach((carrot) => carrot.move());
     this.endGame.move();
     this.platformbonus.move();
   }
@@ -112,6 +127,9 @@ class Game {
         }
       }
     });
+
+
+    
 
     // fire collisions
     const playerVsFire = this.fire.find((fire) => {
@@ -148,50 +166,77 @@ class Game {
     const collideCarrots = this.carrots.find((carrots) => {
       return carrots.collide(this.player);
     });
-    
+
     if (collideCarrots) {
-      this.carrots = this.carrots.filter(carrot => carrot !== collideCarrots)
-      console.log("zanahorias");
-      console.log(this.points);
-      this.points += 5;
+      this.sound.src="/sounds/coin.mp3"
+      this.sound.play();
+      this.carrots = this.carrots.filter((carrot) => carrot !== collideCarrots);
+      this.points += 25;
+    }
+
+    //carrots2 collision
+    const collideCarrots2 = this.carrots2.find((carrots2) => {
+      return carrots2.collide(this.player);
+    });
+
+    if (collideCarrots2) {
+      this.sound.src="/sounds/coin.mp3"
+      this.sound.play();
+      this.carrots2 = this.carrots2.filter(
+        (carrot) => carrot !== collideCarrots2
+      );
+      this.points += 15;
+    }
+    //carrot3 collision
+    const collideCarrots3 = this.carrots3.find((carrots3) => {
+      return carrots3.collide(this.player);
+    });
+
+    if (collideCarrots3) {
+      this.sound.src="/sounds/coin.mp3"
+      this.sound.play();
+      this.carrots3 = this.carrots3.filter(
+        (carrot) => carrot !== collideCarrots3
+      );
+      this.points += 50;
     }
 
     //endGame collision
     if (this.endGame.collide(this.player)) {
       this.youWin();
+      this.endGame.sound.play()
     }
   }
 
-
-  printTime() {
+ /* printTime() {
     this.ctx.font = "20px Verdana";
     this.ctx.fillStyle = "white";
     this.ctx.textAlign = "center";
-    this.ctx.fillText(
-      "Time:" + " " + "this.printMinutes()" + ":" + "this.printSeconds()",
-      250,
-      70
-    );
-  }
+    this.ctx.fillText("Time:" + " " + "Minutes()" + ":" + "Seconds()", 250, 70);
+  }*/
 
   youWin() {
     clearInterval(this.intervalId);
     this.intervalId = null;
-    this.ctx.font = "100px Verdana";
+    this.ctx.font = " bold 100px Verdana";
+    this.ctx.strokeStyle = " bold black";
     this.ctx.fillStyle = "white";
     this.ctx.textAlign = "center";
     this.ctx.fillText("You win!!!!", 500, 250);
+    this.ctx.strokeText("You win!!!!", 500, 250);
   }
 
   gameOver() {
     clearInterval(this.intervalId);
     this.intervalId = null;
-    this.ctx.font = "  100px Verdana ";
-    this.ctx.strokeStyle = "black";
-    this.ctx.fillStyle = "white";
+    this.ctx.font = " bold 100px Verdana ";
+    this.ctx.strokeStyle = " bold black";
+    this.ctx.fillStyle = "red";
     this.ctx.textAlign = "center";
-    this.ctx.fillText("Ohhh, you die!", 500, 250);
-    this.ctx.strokeText("Ohhh, you die!", 500, 250);
+    this.ctx.fillText("Ohhh, you lose!", 500, 250);
+    this.ctx.strokeText("Ohhh, you lose!", 500, 250);
+    this.sound.src="/sounds/rabbitdie.mp3"
+    this.sound.play();
   }
   score() {
     this.ctx.font = "20px Verdana";
@@ -212,6 +257,8 @@ class Game {
     this.bear5.draw();
     this.medium.forEach((obs) => obs.draw());
     this.carrots.forEach((carrot) => carrot.draw());
+    this.carrots2.forEach((carrot) => carrot.draw());
+    this.carrots3.forEach((carrot) => carrot.draw());
     this.endGame.draw();
     this.platformbonus.draw();
   }

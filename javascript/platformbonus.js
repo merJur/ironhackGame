@@ -3,7 +3,7 @@ class Platformbonus {
       this.ctx = ctx;
       this.x = 4650;
       this.y = 275;
-      this.w = 300;
+      this.w = 200;
       this.h = 25;
       this.color = "black";
       this.vx = -2.2;

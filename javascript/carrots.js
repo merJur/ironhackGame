@@ -1,5 +1,5 @@
 class Carrots {
-  constructor(ctx, group) {
+  constructor(ctx) {
     this.ctx = ctx;
     this.x = 1200;
     this.y = 100;
@@ -14,15 +14,23 @@ class Carrots {
   move() {
     this.x -= this.vx;
   }
+
+  
+ randomY (min, max) {
+    return Math.floor(Math.random()* (max - min) + min)
+  }
+
+
   draw() {
     this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
-    if (this.group) {
-      this.ctx.drawImage(this.img, this.x + 10, this.y, this.w, this.h);
-      this.ctx.drawImage(this.img, this.x + 20, this.y, this.w, this.h);
-      this.ctx.drawImage(this.img, this.x + 30, this.y, this.w, this.h);
-      this.ctx.drawImage(this.img, this.x + 40, this.y, this.w, this.h);
+   this.ctx.drawImage(this.img, this.x + 10, this.y, this.w, this.h);
+    this.ctx.drawImage(this.img, this.x + 20, this.y, this.w, this.h);
+    this.ctx.drawImage(this.img, this.x + 30, this.y, this.w, this.h);
+    this.ctx.drawImage(this.img, this.x + 40, this.y, this.w, this.h);
     } 
-  }
+    
+    
+  
 
   collide(player) {
     const collideX = player.x + player.w > this.x && player.x < this.x + this.w;

@@ -2,12 +2,12 @@ class Bear3 {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 5000;
-    this.y = 200;
-    this.w = 100;
-    this.h = 200;
+    this.y = 400-150;
+    this.w = 85;
+    this.h = 150;
     this.color = "grey";
- //   this.img = new Image();
- //   this.img.src = "/images/bear.png";
+    this.img = new Image();
+    this.img.src = "/images/bear.png";
 
     this.vx = -2.2;
   }
@@ -25,9 +25,12 @@ class Bear3 {
 
  
   draw() {
-    this.ctx.beginPath();
-    this.ctx.fillStyle = this.color
-    this.ctx.fillRect(this.x, this.y, this.w, this.h)
-    this.ctx.closePath();
+    this.ctx.drawImage(
+      this.img,
+      this.x,
+      this.y,
+      this.w,
+      this.h
+    )
 }
 }

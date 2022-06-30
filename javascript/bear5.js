@@ -6,9 +6,11 @@ class Bear5 {
       this.w = 150;
       this.h = 200;
       this.color = "grey";
-    //  this.img = new Image();
-    //  this.img.src = "/images/bear.png";
-  
+      this.img = new Image();
+      this.img.src = "/images/osoSprite.png";
+      this.img.frames = 4;
+      this.img.frameIndex = 0;
+      this.tick = 0;
       this.vx = -1.8;
     }
   
@@ -25,9 +27,34 @@ class Bear5 {
   
    
   draw() {
-    this.ctx.beginPath();
-    this.ctx.fillStyle = this.color
-    this.ctx.fillRect(this.x, this.y, this.w, this.h)
-    this.ctx.closePath();
+    this.ctx.drawImage(
+      this.img,
+      (this.img.frameIndex * this.img.width) / this.img.frames,
+      0,
+      this.img.width / this.img.frames,
+      this.img.height,
+      this.x,
+      this.y,
+      this.w,
+      this.h
+    );
+    this.animate();
+  }
+
+  animate() {
+    this.tick++
+    
+    if (this.tick > 8) {
+      this.tick = 0
+
+  
+        this.img.frameIndex++
+      
+      }
+    
+
+    if (this.img.frameIndex >= this.img.frames) {
+      this.img.frameIndex = 0
+    }
   }
 }

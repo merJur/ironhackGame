@@ -4,13 +4,20 @@ class Player {
     this.x = 300;
     this.y = 150;
     this.maxY = 400;
+    this.maxX = 900;
+    this.minX = 35;
     this.w = 50;
     this.h = 50;
     this.color = "red";
     this.vx = 0;
     this.vy = 0;
     this.img = new Image();
-    this.img.src = "/images/rabbit.png";
+    this.img.src = "/images/spriteconejo.png";
+    this.img.frames = 10;
+    this.img.frameIndex = 0;
+    this.tick = 0;
+    this.sound = new Audio();
+    
 
     this.actions = {
       left: false,
@@ -27,6 +34,14 @@ class Player {
     this.vy += this.g;
     this.y += this.vy;
     this.x += this.vx;
+
+    if (this.x <= LEFTLIMIT) {
+      this.x = this.minX;
+    }
+
+    if (this.x >= RIGHTLIMIT) {
+      this.x = this.maxX;
+    }
   }
 
   setListener() {
@@ -36,9 +51,9 @@ class Player {
 
   applyActions() {
     if (this.actions.right) {
-      this.vx += 1;
+      this.vx = 7;
     } else if (this.actions.left) {
-      this.vx -= 1;
+      this.vx = -7;
     } else {
       this.vx = 0;
     }
@@ -49,7 +64,7 @@ class Player {
     }
 
     if (this.actions.jump && !this.isJumping()) {
-      this.vy -= 17;
+      this.vy = -18;
     }
   }
 
@@ -65,19 +80,48 @@ class Player {
       case RIGHT:
         this.actions.right = apply;
         break;
-      case SPACE:
+      case UP:
         this.actions.jump = apply;
+        this.sound.src ="/sounds/salto2.mp3";
+        this.sound.play();
     }
   }
 
   draw() {
-          
     this.ctx.drawImage(
       this.img,
+      (this.img.frameIndex * this.img.width) / this.img.frames,
+      0,
+      this.img.width / this.img.frames,
+      this.img.height,
       this.x,
       this.y,
       this.w,
       this.h
-    )
+    );
+    this.animate();
   }
-}
+
+  animate() {
+    this.tick++;
+    //if (this.tick >8) {
+      //this.tick = 0;
+    //}
+  
+    if (this.actions.right  ) {
+      this.img.src= "/images/spriteconejo.png"
+      this.img.frameIndex++;
+    } if (this.actions.left ) {
+      this.img.src = "/images/spriteconejoizq.png";
+      this.img.frameIndex++;
+    }else {
+      this.img.src= "/images/spriteconejo.png"
+      this.img.frameIndex++;}
+    
+
+      if (this.img.frameIndex >= this.img.frames) {
+        this.img.frameIndex = 0;
+      }
+    }
+  }
+
