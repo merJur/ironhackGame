@@ -24,9 +24,10 @@ class Game {
     this.tickCarrots2 = 0;
     this.carrots3 = [];
     this.tickCarrots3 = 0;
+   
     this.sound = new Audio();
-    this.sound.src = "/sounds/go.mp3"
-
+  //  this.sound.src = "/sounds/go.mp3"
+    this.bear5.shoot()
   }
 
   start() {
@@ -42,18 +43,19 @@ class Game {
       this.tickCarrots++;
       this.tickCarrots2++;
       this.tickCarrots3++;
+     
       this.points;
       this.score();
      
-      //    this.printTime();
 
-      if (this.tickFire % 198 === 0) {
+      
+     if (this.tickFire % 198 === 0) {
         this.addFire();
       }
       if (this.tickPlatform % 700 === 0) {
         this.addPlatform();
       }
-      if (this.tickMedium % 220 === 0) {
+      if (this.tickMedium % 210 === 0) {
         this.addMedium();
       }
       if (this.tickCarrots % 180 === 0) {
@@ -68,6 +70,7 @@ class Game {
     }, 1000 / 60);
   }
 
+ 
   addFire() {
     this.fire.push(new Fire(this.ctx));
   }
@@ -102,6 +105,7 @@ class Game {
     this.bear3.move();
     this.bear4.move();
     this.bear5.move();
+  
     this.medium.forEach((plat) => plat.move());
     this.carrots.forEach((carrot) => carrot.move());
     this.carrots2.forEach((carrot) => carrot.move());
@@ -110,7 +114,7 @@ class Game {
     this.platformbonus.move();
   }
   checkCollisions() {
-    // platform collisions
+    // PLATFORM COLLISION
     const platforms = this.platform.concat(this.medium);
     platforms.push(this.platformbonus);
     if (!platforms.some((plat) => plat.collide(this.player))) {
@@ -128,10 +132,15 @@ class Game {
       }
     });
 
+// HONEYBALL COLLISIONS
+    const playerVsHoney = this.bear5.honeyball.find((honeyball) => {
+      return honeyball.collide(this.player);
+    });
+    if (playerVsHoney) {
+      this.gameOver();
+     }
 
-    
-
-    // fire collisions
+    //FIRE COLLISIONS
     const playerVsFire = this.fire.find((fire) => {
       return fire.collide(this.player);
     });
@@ -139,30 +148,45 @@ class Game {
       this.gameOver();
     }
 
-    //bear collisions
-    if (this.bear.collide(this.player)) {
+    //BEAR COLLISIONS
+    if (this.bear.collide(this.player))  {
+      this.sound.src ='/sounds/bearRoar.mp3';
+      this.sound.play();
       this.gameOver();
+      
     }
 
-    //bear2 collision
+    //BEAR2 COLLISIONS
     if (this.bear2.collide(this.player)) {
+      this.sound.src ='/sounds/bearRoar.mp3';
+      this.sound.play();
       this.gameOver();
+    
     }
-    //bear3 collision
+    //BEAR3 COLLISIONS
     if (this.bear3.collide(this.player)) {
+      this.sound.src ='/sounds/bearRoar.mp3';
+      this.sound.play();
       this.gameOver();
+      
     }
 
-    //bear4 collision
+    //BEAR4 COLLISIONS
     if (this.bear4.collide(this.player)) {
+      this.sound.src ='/sounds/bearRoar.mp3';
+      this.sound.play();
       this.gameOver();
+      
     }
 
-    //bear5 collision
+    //BEARBOSS BEAR5 COLLISIONS
     if (this.bear5.collide(this.player)) {
+      this.sound.src ='/sounds/bearRoar.mp3';
+      this.sound.play();
       this.gameOver();
+      
     }
-    //carrots collision
+    //CARROTS COLLISIONS
     const collideCarrots = this.carrots.find((carrots) => {
       return carrots.collide(this.player);
     });
@@ -174,7 +198,7 @@ class Game {
       this.points += 25;
     }
 
-    //carrots2 collision
+    //CARROTS2 COLLISIONS
     const collideCarrots2 = this.carrots2.find((carrots2) => {
       return carrots2.collide(this.player);
     });
@@ -187,7 +211,7 @@ class Game {
       );
       this.points += 15;
     }
-    //carrot3 collision
+    //CARROT3 COLLISIONS
     const collideCarrots3 = this.carrots3.find((carrots3) => {
       return carrots3.collide(this.player);
     });
@@ -201,20 +225,13 @@ class Game {
       this.points += 50;
     }
 
-    //endGame collision
+    //ENDGAME YOU WIN COLLISIONS
     if (this.endGame.collide(this.player)) {
       this.youWin();
       this.endGame.sound.play()
     }
   }
-
- /* printTime() {
-    this.ctx.font = "20px Verdana";
-    this.ctx.fillStyle = "white";
-    this.ctx.textAlign = "center";
-    this.ctx.fillText("Time:" + " " + "Minutes()" + ":" + "Seconds()", 250, 70);
-  }*/
-
+  
   youWin() {
     clearInterval(this.intervalId);
     this.intervalId = null;
@@ -255,6 +272,7 @@ class Game {
     this.bear3.draw();
     this.bear4.draw();
     this.bear5.draw();
+  
     this.medium.forEach((obs) => obs.draw());
     this.carrots.forEach((carrot) => carrot.draw());
     this.carrots2.forEach((carrot) => carrot.draw());

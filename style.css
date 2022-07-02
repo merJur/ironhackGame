@@ -1,12 +1,39 @@
 #canvas {
   border: 2px solid black;
   border-radius: 5px;
- 
 }
-.colocaCanvas{
+.colocaCanvas {
   margin-top: 50px;
   display: flex;
-  justify-content:center ;
+  justify-content: center;
+}
+.inputName {
+  display: flex;
+  width: 300px;
+  color: white;
+  justify-content: center;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: rgb(48, 160, 125);
+  border: 1px solid white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+.enterName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  
 }
 .btn {
   display: flex;
@@ -27,7 +54,6 @@
 body {
   background-image: url(./images/imagenfondohtml.webp);
   background-size: cover;
-  
 }
 
 h1 {

@@ -3,7 +3,7 @@ class Medium {
       this.ctx = ctx;
       this.x = 980;
       this.y = 200;
-      this.w = 220;
+      this.w = 200;
       this.h = 25;
       this.color = "black";
       this.vx = -2.5;

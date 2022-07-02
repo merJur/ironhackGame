@@ -17,7 +17,6 @@ class Player {
     this.img.frameIndex = 0;
     this.tick = 0;
     this.sound = new Audio();
-    
 
     this.actions = {
       left: false,
@@ -82,7 +81,7 @@ class Player {
         break;
       case UP:
         this.actions.jump = apply;
-        this.sound.src ="/sounds/salto2.mp3";
+        this.sound.src = "/sounds/salto2.mp3";
         this.sound.play();
     }
   }
@@ -104,24 +103,25 @@ class Player {
 
   animate() {
     this.tick++;
-    //if (this.tick >8) {
-      //this.tick = 0;
-    //}
-  
-    if (this.actions.right  ) {
-      this.img.src= "/images/spriteconejo.png"
-      this.img.frameIndex++;
-    } if (this.actions.left ) {
-      this.img.src = "/images/spriteconejoizq.png";
-      this.img.frameIndex++;
-    }else {
-      this.img.src= "/images/spriteconejo.png"
-      this.img.frameIndex++;}
+    if (this.tick >10) {
+    this.tick = 0;
     
 
-      if (this.img.frameIndex >= this.img.frames) {
-        this.img.frameIndex = 0;
-      }
+    if (this.actions.right) {
+      this.img.src = "/images/spriteconejo.png";
+      this.img.frameIndex++;
+    }
+    if (this.actions.left) {
+      this.img.src = "/images/spriteconejoizq.png";
+      this.img.frameIndex++;
+    } else {
+      this.img.src = "/images/spriteconejo.png";
+      this.img.frameIndex++;
+    }
+
+    if (this.img.frameIndex >= this.img.frames) {
+      this.img.frameIndex = 0;
+    }
     }
   }
-
+}
