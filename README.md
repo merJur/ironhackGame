@@ -1,9 +1,5 @@
 # ironhackGame
 
-futuro:
+Help the little rabbit to go through the forest.. The little rabbit has to jump over bonfires, dangerous bears, and has to dodge a lot of honeyballs.
 
-
-- barra vida player
-- enemigos (fire, arbusto con espinas, zorro/lobo) vayan eliminando vida
-- vidas recogidas q sumen a barra vida player 
-
+To help the little rabbit, use the 'w' key to jump, 'a' key to go left, and 'd' key to go right.

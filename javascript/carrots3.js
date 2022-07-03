@@ -3,11 +3,11 @@ class Carrots3 {
     this.ctx = ctx;
     this.x = 2000;
     this.y = 200;
-    this.w = 30;
-    this.h = 30;
+    this.w = 35;
+    this.h = 35;
     this.color = "pink";
     this.img = new Image();
-    this.img.src = "/images/carrot.png";
+    this.img.src = "./images/carrot.png";
     this.tick = 0;
     this.vx = 1.5;
   }

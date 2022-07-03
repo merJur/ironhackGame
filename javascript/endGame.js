@@ -7,12 +7,14 @@ class EndGame {
     this.h = 400;
     this.color = "yellow";
     this.img = new Image();
-    this.img.src = "/images/banderas.png";
+    this.img2 = new Image();
+    this.img.src = "./images/banderas.png";
+    this.img2 = "./images"
     this.img.frames = 4;
     this.img.frameIndex = 0;
     this.tick = 0;
     this.sound = new Audio();
-    this.sound.src ="/sounds/win.mp3";
+    this.sound.src ="./sounds/win.mp3";
 
     this.vx = -1.66;
   }
@@ -28,7 +30,7 @@ class EndGame {
     return collideX && collideY;
   }
 sound (){
-  this.sound.src ="/sounds/win.mp3"
+  this.sound.src ="./sounds/win.mp3"
 }
   draw() {
     this.ctx.drawImage(
@@ -41,7 +43,8 @@ sound (){
       this.y,
       this.w,
       this.h
-    );
+    )
+    
     this.animate();
   }
 

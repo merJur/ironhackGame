@@ -7,9 +7,9 @@ class Bear {
     this.h = 200;
     this.color = "grey";
      this.img = new Image();
-     this.img.src = '/images/bear2legsprite.png';
+     this.img.src = './images/bear2legsprite.png';
      this.sound = new Audio();
-     this.sound.src ="/sounds/bearRoar.mp3"
+     this.sound.src ="./sounds/bearRoar.mp3"
      this.tick = 0
      this.img.frames = 4;
     this.img.frameIndex = 0;

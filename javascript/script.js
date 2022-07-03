@@ -2,39 +2,17 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const game = new Game(ctx);
 const startBtn = document.querySelector(".startbtn");
-const enterName = document.querySelector('input');
+const enterNameBtn = document.querySelector("#add-name-btn");
+const enterNameInput = document.querySelector("input");
 const nameArray = [];
 
-
-function addName(name){
-  nameArray.push.call(name);
-  }
-
-
-enterName = addName()
-console.log(enterName)
-
-
-
-
-//this.sound = new Audio();
-//this.sound.src="/sounds/go,mp3";
-// 116 REFRESH
-
-
 window.onload = () => {
+  printResults();
+
   startBtn.onclick = () => {
-    startBtn.textContent = "PUSH AFTER ENTER NAME"
-    inputName();
-    console.log(enterName)
     startGame();
-  //  this.sound.play();
-    disablebtn(startBtn);
-    startBtn.textContent = "REFRESH  TO  PLAY  AGAIN  !!!";
-  };startBtn.classList.remove('start');
-  startBtn.classList.add('refresh');
-
-
+   // disablebtn(startBtn);
+     };
   function disablebtn(startBtn) {
     startBtn.disabled = "true";
   }
@@ -42,17 +20,61 @@ window.onload = () => {
   function startGame() {
     if (game.intervalId === null) {
       game.start();
-
     } else {
       game.score();
-      // game.stop();
+     
     }
   }
+
+  enterNameBtn.onclick = () => {
+    window.localStorage.setItem(enterNameInput.value, game.points);
+    readStorageAndUpdate();
+  };
 };
 
-/*
-miStorage = window.localStorage;
-localStorage.setItem('name' + this.score); añade y ver el storage
+function printResults() {
+  const theList = [];
+  storage = JSON.parse(JSON.stringify(window.localStorage));
+  const list = document.querySelector("ol");
+  Object.keys(storage).forEach((player, index) => {
+    const points = storage[player];
+    const theItem = {
+      player: player,
+      points: parseInt(points, 10),
+    };
+    theList.push(theItem);
+  });
+  theList.sort((a, b) => b.points - a.points);
+  theList.map((e, i) => {
+    const liNode = document.createElement("li");
+    liNode.innerText = `${e.player}: ${e.points}`;
+    if (i <= 9) return list.appendChild(liNode);
+  });
+}
 
+function readStorageAndUpdate() {
+  const theList = [];
+  storage = JSON.parse(JSON.stringify(window.localStorage));
+  const list = document.querySelector("ol");
+  restart();
+  Object.keys(storage).forEach((player, index) => {
+    const points = storage[player];
+    const theItem = {
+      player: player,
+      points: parseInt(points, 10),
+    };
+    theList.push(theItem);
+  });
+  theList.sort((a, b) => b.points - a.points);
+  theList.map((e, i) => {
+    const liNode = document.createElement("li");
+    liNode.innerText = `${e.player}: ${e.points}`;
+    if (i <= 9) {
+      return list.appendChild(liNode)
+    }
+  });
+}
 
-*/
+function restart() {
+  window.location.reload();
+}

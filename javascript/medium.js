@@ -8,7 +8,7 @@ class Medium {
       this.color = "black";
       this.vx = -2.5;
       this.img = new Image();
-       this.img.src= "images/plataformas2.png"
+       this.img.src= "./images/plataformas2.png"
     }
   
     collide(player) { //esto funciona bien

@@ -3,6 +3,7 @@ class Game {
     this.ctx = ctx;
     this.intervalId = null;
     this.background = new Background(this.ctx);
+    this.newForest = new NewForest(this.ctx);
     this.player = new Player(this.ctx);
     this.points = 0;
     this.bear = new Bear(this.ctx);
@@ -26,8 +27,9 @@ class Game {
     this.tickCarrots3 = 0;
    
     this.sound = new Audio();
-  //  this.sound.src = "/sounds/go.mp3"
     this.bear5.shoot()
+
+    this.gameOverSection = document.getElementById("game-over-section")
   }
 
   start() {
@@ -97,6 +99,7 @@ class Game {
 
   move() {
     this.background.move();
+    this.newForest.move();
     this.player.move();
     this.fire.forEach((fire) => fire.move());
     this.platform.forEach((plat) => plat.move());
@@ -105,7 +108,6 @@ class Game {
     this.bear3.move();
     this.bear4.move();
     this.bear5.move();
-  
     this.medium.forEach((plat) => plat.move());
     this.carrots.forEach((carrot) => carrot.move());
     this.carrots2.forEach((carrot) => carrot.move());
@@ -150,7 +152,7 @@ class Game {
 
     //BEAR COLLISIONS
     if (this.bear.collide(this.player))  {
-      this.sound.src ='/sounds/bearRoar.mp3';
+      this.sound.src ='./sounds/bearRoar.mp3';
       this.sound.play();
       this.gameOver();
       
@@ -158,14 +160,14 @@ class Game {
 
     //BEAR2 COLLISIONS
     if (this.bear2.collide(this.player)) {
-      this.sound.src ='/sounds/bearRoar.mp3';
+      this.sound.src ='./sounds/bearRoar.mp3';
       this.sound.play();
       this.gameOver();
     
     }
     //BEAR3 COLLISIONS
     if (this.bear3.collide(this.player)) {
-      this.sound.src ='/sounds/bearRoar.mp3';
+      this.sound.src ='./sounds/bearRoar.mp3';
       this.sound.play();
       this.gameOver();
       
@@ -173,7 +175,7 @@ class Game {
 
     //BEAR4 COLLISIONS
     if (this.bear4.collide(this.player)) {
-      this.sound.src ='/sounds/bearRoar.mp3';
+      this.sound.src ='./sounds/bearRoar.mp3';
       this.sound.play();
       this.gameOver();
       
@@ -181,7 +183,7 @@ class Game {
 
     //BEARBOSS BEAR5 COLLISIONS
     if (this.bear5.collide(this.player)) {
-      this.sound.src ='/sounds/bearRoar.mp3';
+      this.sound.src ='./sounds/bearRoar.mp3';
       this.sound.play();
       this.gameOver();
       
@@ -192,7 +194,7 @@ class Game {
     });
 
     if (collideCarrots) {
-      this.sound.src="/sounds/coin.mp3"
+      this.sound.src="./sounds/coin.mp3"
       this.sound.play();
       this.carrots = this.carrots.filter((carrot) => carrot !== collideCarrots);
       this.points += 25;
@@ -204,7 +206,7 @@ class Game {
     });
 
     if (collideCarrots2) {
-      this.sound.src="/sounds/coin.mp3"
+      this.sound.src="./sounds/coin.mp3"
       this.sound.play();
       this.carrots2 = this.carrots2.filter(
         (carrot) => carrot !== collideCarrots2
@@ -217,7 +219,7 @@ class Game {
     });
 
     if (collideCarrots3) {
-      this.sound.src="/sounds/coin.mp3"
+      this.sound.src="./sounds/coin.mp3"
       this.sound.play();
       this.carrots3 = this.carrots3.filter(
         (carrot) => carrot !== collideCarrots3
@@ -241,6 +243,8 @@ class Game {
     this.ctx.textAlign = "center";
     this.ctx.fillText("You win!!!!", 500, 250);
     this.ctx.strokeText("You win!!!!", 500, 250);
+    this.gameOverSection.style.display = "block"
+  
   }
 
   gameOver() {
@@ -252,8 +256,9 @@ class Game {
     this.ctx.textAlign = "center";
     this.ctx.fillText("Ohhh, you lose!", 500, 250);
     this.ctx.strokeText("Ohhh, you lose!", 500, 250);
-    this.sound.src="/sounds/rabbitdie.mp3"
+    this.sound.src="./sounds/rabbitdie.mp3"
     this.sound.play();
+    this.gameOverSection.style.display = "block"
   }
   score() {
     this.ctx.font = "20px Verdana";
@@ -272,11 +277,11 @@ class Game {
     this.bear3.draw();
     this.bear4.draw();
     this.bear5.draw();
-  
     this.medium.forEach((obs) => obs.draw());
     this.carrots.forEach((carrot) => carrot.draw());
     this.carrots2.forEach((carrot) => carrot.draw());
     this.carrots3.forEach((carrot) => carrot.draw());
+    this.newForest.draw();
     this.endGame.draw();
     this.platformbonus.draw();
   }

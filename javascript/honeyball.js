@@ -7,7 +7,7 @@ class Honeyball {
     this.h = 10;
     this.color = "yellow";
     this.img = new Image();
-    this.img.src = "/images/honeyshoot.png";
+    this.img.src = "./images/honeyshoot.png";
     this.vx = -5.8;
     this.tick = 0
   }

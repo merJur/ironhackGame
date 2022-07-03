@@ -12,7 +12,7 @@ class Player {
     this.vx = 0;
     this.vy = 0;
     this.img = new Image();
-    this.img.src = "/images/spriteconejo.png";
+    this.img.src = "./images/spriteconejo.png";
     this.img.frames = 10;
     this.img.frameIndex = 0;
     this.tick = 0;
@@ -81,7 +81,7 @@ class Player {
         break;
       case UP:
         this.actions.jump = apply;
-        this.sound.src = "/sounds/salto2.mp3";
+        this.sound.src = "./sounds/salto2.mp3";
         this.sound.play();
     }
   }
@@ -108,14 +108,14 @@ class Player {
     
 
     if (this.actions.right) {
-      this.img.src = "/images/spriteconejo.png";
+      this.img.src = "./images/spriteconejo.png";
       this.img.frameIndex++;
     }
     if (this.actions.left) {
-      this.img.src = "/images/spriteconejoizq.png";
+      this.img.src = "./images/spriteconejoizq.png";
       this.img.frameIndex++;
     } else {
-      this.img.src = "/images/spriteconejo.png";
+      this.img.src = "./images/spriteconejo.png";
       this.img.frameIndex++;
     }
 

@@ -7,7 +7,7 @@ class Carrots2 {
     this.h = 20;
     this.color = "pink";
     this.img = new Image();
-    this.img.src = "/images/carrot.png";
+    this.img.src = "./images/carrot.png";
     this.tick = 0;
     this.vx = 1.5;
   }

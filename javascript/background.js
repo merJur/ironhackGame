@@ -4,7 +4,7 @@ class Background {
     this.x = 0;
     this.y = 0;
     this.img = new Image();
-    this.img.src = "/images/superBosque.png";
+    this.img.src = "./images/superBosque.png";
     this.h = this.ctx.canvas.height;
     this.w = this.h * 17;
 

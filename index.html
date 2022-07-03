@@ -4,25 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>juego</title>
+    <title>Croos the forest</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="colocaCanvas">
       <canvas id="canvas" width="1000" height="450"></canvas>
     </div>
-    <div class="enterName"> 
-      <label>Enter your name!                 </label>
-      <input type='text' class='inputName'>
+    <h3>How to play?</h3>
+    <div class="row">
+      <p class="text1">
+        Use 'a' to go to left<br/>
+        Use 'd' to go to  right<br/>
+        Use 'w' to jump
+      </p>
+      <p class="text2">
+       Be carefull with the bonfires,<br/>
+        with the wild bears<br/>
+        and with the honeball<br/>
+        (even they were delicious)
+      </p>
     </div>
-    <div class="btn"><button class="startbtn">PUSH AFTER NAME</button></div>
-    <div>
-      <h1>Push start to see the forest</h1>
-      <p class="text">Use 'a' to go to the left</p>
-      <p class="text">Use 'd' to go to the right</p>
-      <p class="text">Use 'w' for jumping</p>
+    <h1>Help to the little rabbit to cross the dangerous forest.</h1>
+    <div id="game-over-section">
+        <div class="row2">
+        <input type="text"  placeholder ="Enter your name"  class="inputName" />
+        <button id="add-name-btn">REFRESH</button>
+      </div>
     </div>
-    
+    <div class="btn">
+      <button class="startbtn">START</button>
+    </div>
+
+    <div class="list"><ol></ol></div>
+
     <script type="text/javascript" src="./javascript/carrots.js"></script>
     <script type="text/javascript" src="./javascript/carrots2.js"></script>
     <script type="text/javascript" src="./javascript/carrots3.js"></script>
@@ -41,6 +56,7 @@
     <script type="text/javascript" src="./javascript/honeyball.js"></script>
     <script type="text/javascript" src="./javascript/bear5.js"></script>
     <script type="text/javascript" src="./javascript/endGame.js"></script>
+    <script type="text/javascript" src="./javascript/newForest.js"></script>
     <script type="text/javascript" src="./javascript/script.js"></script>
   </body>
 </html>

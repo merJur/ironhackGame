@@ -7,13 +7,13 @@ class Bear4 {
     this.h = 100;
     this.color = "grey";
     this.img = new Image();
-    this.img.src = "/images/osoSprite.png";
+    this.img.src = "./images/osoSprite.png";
     this.img.frames = 4;
     this.img.frameIndex = 0;
     this.tick = 0;
     this.vx = -2.1;
     this.sound = new Audio();
-    this.sound.src= "/sounds/bearRoar.mp3";
+    this.sound.src= "./sounds/bearRoar.mp3";
   }
 
   move() {

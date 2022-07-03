@@ -7,7 +7,7 @@ class Bear3 {
     this.h = 150;
     this.color = "grey";
     this.img = new Image();
-    this.img.src = "/images/bear2legsprite.png";
+    this.img.src = "./images/bear2legsprite.png";
     this.img.frames = 4;
     this.img.frameIndex = 0;
     this.tick = 0;

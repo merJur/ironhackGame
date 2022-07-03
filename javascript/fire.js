@@ -7,7 +7,7 @@ class Fire {
     this.w = 45;
     this.color = "orange";
     this.img = new Image();
-    this.img.src = "/images/hogueras.png";
+    this.img.src = "./images/hogueras.png";
     this.img.frames = 4;
     this.img.frameIndex = 0;
     this.tick = 0;
