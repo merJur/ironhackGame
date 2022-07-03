@@ -28,6 +28,4 @@ class Honeyball {
     this.ctx.drawImage(this.img, this.x +30, this.y, this.w, this.h);
     this.ctx.drawImage(this.img, this.x +40, this.y, this.w, this.h);    
   }
-
- 
 }

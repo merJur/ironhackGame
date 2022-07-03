@@ -25,11 +25,9 @@ class Game {
     this.tickCarrots2 = 0;
     this.carrots3 = [];
     this.tickCarrots3 = 0;
-   
     this.sound = new Audio();
-    this.bear5.shoot()
-
-    this.gameOverSection = document.getElementById("game-over-section")
+    this.bear5.shoot();
+    this.gameOverSection = document.getElementById("game-over-section");
   }
 
   start() {
@@ -45,13 +43,10 @@ class Game {
       this.tickCarrots++;
       this.tickCarrots2++;
       this.tickCarrots3++;
-     
       this.points;
       this.score();
-     
 
-      
-     if (this.tickFire % 198 === 0) {
+      if (this.tickFire % 198 === 0) {
         this.addFire();
       }
       if (this.tickPlatform % 700 === 0) {
@@ -72,7 +67,6 @@ class Game {
     }, 1000 / 60);
   }
 
- 
   addFire() {
     this.fire.push(new Fire(this.ctx));
   }
@@ -115,6 +109,7 @@ class Game {
     this.endGame.move();
     this.platformbonus.move();
   }
+
   checkCollisions() {
     // PLATFORM COLLISION
     const platforms = this.platform.concat(this.medium);
@@ -134,13 +129,13 @@ class Game {
       }
     });
 
-// HONEYBALL COLLISIONS
+    // HONEYBALL COLLISIONS
     const playerVsHoney = this.bear5.honeyball.find((honeyball) => {
       return honeyball.collide(this.player);
     });
     if (playerVsHoney) {
       this.gameOver();
-     }
+    }
 
     //FIRE COLLISIONS
     const playerVsFire = this.fire.find((fire) => {
@@ -151,42 +146,37 @@ class Game {
     }
 
     //BEAR COLLISIONS
-    if (this.bear.collide(this.player))  {
-      this.sound.src ='./sounds/bearRoar.mp3';
+    if (this.bear.collide(this.player)) {
+      this.sound.src = "./sounds/bearRoar.mp3";
       this.sound.play();
       this.gameOver();
-      
     }
 
     //BEAR2 COLLISIONS
     if (this.bear2.collide(this.player)) {
-      this.sound.src ='./sounds/bearRoar.mp3';
+      this.sound.src = "./sounds/bearRoar.mp3";
       this.sound.play();
       this.gameOver();
-    
     }
     //BEAR3 COLLISIONS
     if (this.bear3.collide(this.player)) {
-      this.sound.src ='./sounds/bearRoar.mp3';
+      this.sound.src = "./sounds/bearRoar.mp3";
       this.sound.play();
       this.gameOver();
-      
     }
 
     //BEAR4 COLLISIONS
     if (this.bear4.collide(this.player)) {
-      this.sound.src ='./sounds/bearRoar.mp3';
+      this.sound.src = "./sounds/bearRoar.mp3";
       this.sound.play();
       this.gameOver();
-      
     }
 
     //BEARBOSS BEAR5 COLLISIONS
     if (this.bear5.collide(this.player)) {
-      this.sound.src ='./sounds/bearRoar.mp3';
+      this.sound.src = "./sounds/bearRoar.mp3";
       this.sound.play();
       this.gameOver();
-      
     }
     //CARROTS COLLISIONS
     const collideCarrots = this.carrots.find((carrots) => {
@@ -194,7 +184,7 @@ class Game {
     });
 
     if (collideCarrots) {
-      this.sound.src="./sounds/coin.mp3"
+      this.sound.src = "./sounds/coin.mp3";
       this.sound.play();
       this.carrots = this.carrots.filter((carrot) => carrot !== collideCarrots);
       this.points += 25;
@@ -206,7 +196,7 @@ class Game {
     });
 
     if (collideCarrots2) {
-      this.sound.src="./sounds/coin.mp3"
+      this.sound.src = "./sounds/coin.mp3";
       this.sound.play();
       this.carrots2 = this.carrots2.filter(
         (carrot) => carrot !== collideCarrots2
@@ -219,7 +209,7 @@ class Game {
     });
 
     if (collideCarrots3) {
-      this.sound.src="./sounds/coin.mp3"
+      this.sound.src = "./sounds/coin.mp3";
       this.sound.play();
       this.carrots3 = this.carrots3.filter(
         (carrot) => carrot !== collideCarrots3
@@ -230,10 +220,10 @@ class Game {
     //ENDGAME YOU WIN COLLISIONS
     if (this.endGame.collide(this.player)) {
       this.youWin();
-      this.endGame.sound.play()
+      this.endGame.sound.play();
     }
   }
-  
+
   youWin() {
     clearInterval(this.intervalId);
     this.intervalId = null;
@@ -243,8 +233,7 @@ class Game {
     this.ctx.textAlign = "center";
     this.ctx.fillText("You win!!!!", 500, 250);
     this.ctx.strokeText("You win!!!!", 500, 250);
-    this.gameOverSection.style.display = "block"
-  
+    this.gameOverSection.style.display = "block";
   }
 
   gameOver() {
@@ -256,9 +245,9 @@ class Game {
     this.ctx.textAlign = "center";
     this.ctx.fillText("Ohhh, you lose!", 500, 250);
     this.ctx.strokeText("Ohhh, you lose!", 500, 250);
-    this.sound.src="./sounds/rabbitdie.mp3"
+    this.sound.src = "./sounds/rabbitdie.mp3";
     this.sound.play();
-    this.gameOverSection.style.display = "block"
+    this.gameOverSection.style.display = "block";
   }
   score() {
     this.ctx.font = "20px Verdana";

@@ -2,7 +2,7 @@ class Bear3 {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 5000;
-    this.y = 400-150;
+    this.y = 400 - 150;
     this.w = 85;
     this.h = 150;
     this.color = "grey";
@@ -11,7 +11,6 @@ class Bear3 {
     this.img.frames = 4;
     this.img.frameIndex = 0;
     this.tick = 0;
-
     this.vx = -2.2;
   }
 
@@ -26,7 +25,6 @@ class Bear3 {
     return collideX && collideY;
   }
 
- 
   draw() {
     this.ctx.drawImage(
       this.img,
@@ -43,19 +41,14 @@ class Bear3 {
   }
 
   animate() {
-    this.tick++
-    
+    this.tick++;
+
     if (this.tick > 8) {
-      this.tick = 0
-
-  
-        this.img.frameIndex++
-      
-      }
-    
-
+      this.tick = 0;
+      this.img.frameIndex++;
+    }
     if (this.img.frameIndex >= this.img.frames) {
-      this.img.frameIndex = 0
+      this.img.frameIndex = 0;
     }
   }
 }

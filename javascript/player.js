@@ -106,7 +106,6 @@ class Player {
     if (this.tick >10) {
     this.tick = 0;
     
-
     if (this.actions.right) {
       this.img.src = "./images/spriteconejo.png";
       this.img.frameIndex++;

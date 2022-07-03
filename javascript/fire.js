@@ -24,8 +24,6 @@ class Fire {
     return collideX && collideY;
   }
 
-
-
   draw() {
     this.ctx.drawImage(
       this.img,
@@ -48,8 +46,6 @@ class Fire {
       this.tick = 0
       this.img.frameIndex ++
   
-    
-
     if (this.img.frameIndex >= this.img.frames) {
       this.img.frameIndex = 0
     }

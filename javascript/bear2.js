@@ -11,7 +11,6 @@ class Bear2 {
     this.img.frames = 4;
     this.img.frameIndex = 0;
     this.tick = 0;
-
     this.vx = -3;
   }
 
@@ -42,20 +41,15 @@ class Bear2 {
   }
 
   animate() {
-    this.tick++
-    
-    if (this.tick > 8) {
-      this.tick = 0
+    this.tick++;
 
-  
-        this.img.frameIndex++
-      
-      }
-    
+    if (this.tick > 8) {
+      this.tick = 0;
+      this.img.frameIndex++;
+    }
 
     if (this.img.frameIndex >= this.img.frames) {
-      this.img.frameIndex = 0
+      this.img.frameIndex = 0;
     }
   }
-  }
-
+}

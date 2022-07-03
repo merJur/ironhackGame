@@ -12,7 +12,6 @@ class Bear5 {
     this.img.frameIndex = 0;
     this.tick = 0;
     this.vx = -1.8;
-
     this.honeyball = [];
     this.tickHoneyball = 0;
   }
@@ -58,7 +57,6 @@ class Bear5 {
 
     if (this.tick > 8) {
       this.tick = 0;
-
       this.img.frameIndex++;
     }
 

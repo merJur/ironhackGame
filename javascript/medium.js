@@ -27,8 +27,7 @@ class Medium {
     this.x += this.vx
   }
   
-  
-   draw() {
+  draw() {
       this.ctx.drawImage(
         this.img,
         this.x,

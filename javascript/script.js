@@ -11,8 +11,8 @@ window.onload = () => {
 
   startBtn.onclick = () => {
     startGame();
-   // disablebtn(startBtn);
-     };
+    disablebtn(startBtn);
+  };
   function disablebtn(startBtn) {
     startBtn.disabled = "true";
   }
@@ -22,7 +22,6 @@ window.onload = () => {
       game.start();
     } else {
       game.score();
-     
     }
   }
 
@@ -70,7 +69,7 @@ function readStorageAndUpdate() {
     const liNode = document.createElement("li");
     liNode.innerText = `${e.player}: ${e.points}`;
     if (i <= 9) {
-      return list.appendChild(liNode)
+      return list.appendChild(liNode);
     }
   });
 }

@@ -13,12 +13,11 @@ class Bear4 {
     this.tick = 0;
     this.vx = -2.1;
     this.sound = new Audio();
-    this.sound.src= "./sounds/bearRoar.mp3";
+    this.sound.src = "./sounds/bearRoar.mp3";
   }
 
   move() {
     this.x += this.vx;
-   
   }
 
   collide(player) {
@@ -48,7 +47,6 @@ class Bear4 {
 
     if (this.tick > 8) {
       this.tick = 0;
-
       this.img.frameIndex++;
     }
 
