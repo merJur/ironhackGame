@@ -1,9 +1,9 @@
 class Platform {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 999;
+    this.x = 2000;
     this.y = 320;
-    this.w = 280;
+    this.w = 230;
     this.h = 25;
     this.color = "black";
     this.vx = -3;

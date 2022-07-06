@@ -1,7 +1,7 @@
 class Carrots3 {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 2000;
+    this.x = 1200;
     this.y = 200;
     this.w = 35;
     this.h = 35;

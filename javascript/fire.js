@@ -1,7 +1,7 @@
 class Fire {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 1100;
+    this.x = 1150;
     this.y = 360;
     this.h = 45;
     this.w = 45;

@@ -10,6 +10,7 @@ class Carrots {
     this.img.src = "./images/carrot.png";
     this.tick = 0;
     this.vx = 2.5;
+    this.points = 0
   }
   move() {
     this.x -= this.vx;
@@ -27,6 +28,7 @@ class Carrots {
     const collideX = player.x + player.w > this.x && player.x < this.x + this.w;
     const collideY = player.y < this.y + this.h && player.y + player.h > this.y;
 
+    
     return collideX && collideY;
   }
 }

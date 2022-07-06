@@ -13,6 +13,8 @@ class Game {
     this.bear5 = new Bear5(this.ctx);
     this.endGame = new EndGame(this.ctx);
     this.platformbonus = new Platformbonus(this.ctx);
+    this.platformbonus2 = new  Platformbonus2 (this.ctx);
+    this.platformbonus3 = new  PlatformBonus3 (this.ctx);
     this.platform = [new Platform(this.ctx)];
     this.tickPlatform = 0;
     this.fire = [];
@@ -49,7 +51,7 @@ class Game {
       if (this.tickFire % 198 === 0) {
         this.addFire();
       }
-      if (this.tickPlatform % 700 === 0) {
+      if (this.tickPlatform % 600 === 0) {
         this.addPlatform();
       }
       if (this.tickMedium % 210 === 0) {
@@ -108,12 +110,16 @@ class Game {
     this.carrots3.forEach((carrot) => carrot.move());
     this.endGame.move();
     this.platformbonus.move();
+    this.platformbonus2.move();
+    this.platformbonus3.move();
   }
 
   checkCollisions() {
     // PLATFORM COLLISION
     const platforms = this.platform.concat(this.medium);
     platforms.push(this.platformbonus);
+    platforms.push(this.platformbonus2);
+    platforms.push(this.platformbonus3);
     if (!platforms.some((plat) => plat.collide(this.player))) {
       this.player.maxY = FLOOR;
     }
@@ -260,7 +266,7 @@ class Game {
     this.background.draw();
     this.player.draw();
     this.platform.forEach((obs) => obs.draw());
-    this.fire.forEach((obs) => obs.draw());
+   
     this.bear.draw();
     this.bear2.draw();
     this.bear3.draw();
@@ -270,8 +276,12 @@ class Game {
     this.carrots.forEach((carrot) => carrot.draw());
     this.carrots2.forEach((carrot) => carrot.draw());
     this.carrots3.forEach((carrot) => carrot.draw());
+    this.fire.forEach((obs) => obs.draw());
     this.newForest.draw();
     this.endGame.draw();
     this.platformbonus.draw();
+    this.platformbonus2.draw();
+    this.platformbonus3.draw();
   }
-}
+  }
+

@@ -1,12 +1,12 @@
-class Platformbonus {
+class Platformbonus2 {
     constructor(ctx, x) {
       this.ctx = ctx;
-      this.x = 4650;
+      this.x = 950;
       this.y = 275;
       this.w = 200;
       this.h = 25;
       this.color = "black";
-      this.vx = -2.2;
+      this.vx = -2.1;
       this.img = new Image();
       this.img.src= "./images/plataformas2.png"
     }
