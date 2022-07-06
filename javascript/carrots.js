@@ -2,7 +2,7 @@ class Carrots {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 1200;
-    this.y = 100;
+    this.y = Math.random() * (150 - 90) + 90;
     this.w = 20;
     this.h = 20;
     this.color = "pink";

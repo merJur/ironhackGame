@@ -1,14 +1,16 @@
-class Medium {
+class Highplatform {
     constructor(ctx) {
       this.ctx = ctx;
       this.x = 980;
-      this.y = 200;
-      this.w = 200;
+      this.y = Math.random() * (230-170) + 170;
+      this.w = this.w
       this.h = 25;
       this.color = "black";
-      this.vx = -2.5;
+      this.vx = -(Math.random() * (2.8 - 1.6) + 1.6) ;
       this.img = new Image();
        this.img.src= "./images/plataformas2.png"
+
+       this.w = Math.random() * (280 - 125) +125;
     }
   
     collide(player) { //esto funciona bien

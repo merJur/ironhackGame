@@ -2,8 +2,8 @@ class Carrots3 {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 1200;
-    this.y = 200;
-    this.w = 35;
+    this.y = Math.random() * (150 - 300) + 300;
+    this.w = 40;
     this.h = 35;
     this.color = "pink";
     this.img = new Image();

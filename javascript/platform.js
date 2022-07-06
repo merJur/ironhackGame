@@ -2,13 +2,17 @@ class Platform {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 2000;
-    this.y = 320;
-    this.w = 230;
+    this.y = Math.random() * (340 - 300)+ 300;
+    this.w = this.w;
     this.h = 25;
     this.color = "black";
     this.vx = -3;
     this.img = new Image();
     this.img.src= "./images/plataformas2.png"
+
+
+
+    this.w = Math.random() * (250 - 80) + 80;
   }
 
   collide(player) { //esto funciona bien

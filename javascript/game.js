@@ -19,8 +19,8 @@ class Game {
     this.tickPlatform = 0;
     this.fire = [];
     this.tickFire = 0;
-    this.medium = [new Medium(this.ctx)];
-    this.tickMedium = 0;
+    this.highplatform = [new Highplatform(this.ctx)];
+    this.tickHighplatform = 0;
     this.carrots = [];
     this.tickCarrots = 0;
     this.carrots2 = [];
@@ -41,21 +41,21 @@ class Game {
       this.move();
       this.tickFire++;
       this.tickPlatform++;
-      this.tickMedium++;
+      this.tickHighplatform++;
       this.tickCarrots++;
       this.tickCarrots2++;
       this.tickCarrots3++;
       this.points;
       this.score();
 
-      if (this.tickFire % 198 === 0) {
+      if (this.tickFire % 198  === 0) {
         this.addFire();
       }
       if (this.tickPlatform % 600 === 0) {
         this.addPlatform();
       }
-      if (this.tickMedium % 210 === 0) {
-        this.addMedium();
+      if (this.tickHighplatform % 240 === 0) {
+        this.addHighplatform();
       }
       if (this.tickCarrots % 180 === 0) {
         this.addCarrots();
@@ -76,8 +76,8 @@ class Game {
   addPlatform() {
     this.platform.push(new Platform(this.ctx));
   }
-  addMedium() {
-    this.medium.push(new Medium(this.ctx));
+  addHighplatform() {
+    this.highplatform.push(new Highplatform(this.ctx));
   }
 
   addCarrots() {
@@ -104,7 +104,7 @@ class Game {
     this.bear3.move();
     this.bear4.move();
     this.bear5.move();
-    this.medium.forEach((plat) => plat.move());
+    this.highplatform.forEach((plat) => plat.move());
     this.carrots.forEach((carrot) => carrot.move());
     this.carrots2.forEach((carrot) => carrot.move());
     this.carrots3.forEach((carrot) => carrot.move());
@@ -116,7 +116,7 @@ class Game {
 
   checkCollisions() {
     // PLATFORM COLLISION
-    const platforms = this.platform.concat(this.medium);
+    const platforms = this.platform.concat(this.highplatform);
     platforms.push(this.platformbonus);
     platforms.push(this.platformbonus2);
     platforms.push(this.platformbonus3);
@@ -266,13 +266,12 @@ class Game {
     this.background.draw();
     this.player.draw();
     this.platform.forEach((obs) => obs.draw());
-   
     this.bear.draw();
     this.bear2.draw();
     this.bear3.draw();
     this.bear4.draw();
     this.bear5.draw();
-    this.medium.forEach((obs) => obs.draw());
+    this.highplatform.forEach((obs) => obs.draw());
     this.carrots.forEach((carrot) => carrot.draw());
     this.carrots2.forEach((carrot) => carrot.draw());
     this.carrots3.forEach((carrot) => carrot.draw());

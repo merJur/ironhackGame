@@ -2,7 +2,7 @@ class Honeyball {
   constructor(ctx, x, y) {
     this.ctx = ctx;
     this.x = x;
-    this.y = 235;
+    this.y = Math.random() * (300 - 235) + 235;
     this.w = 10;
     this.h = 10;
     this.color = "yellow";

@@ -1,7 +1,7 @@
 class Fire {
   constructor(ctx) {
     this.ctx = ctx;
-    this.x = 1150;
+    this.x = this.x;
     this.y = 360;
     this.h = 45;
     this.w = 45;
@@ -12,6 +12,8 @@ class Fire {
     this.img.frameIndex = 0;
     this.tick = 0;
     this.vx = 1.5;
+
+    this.x = Math.random() * (2300 - 430) +430;
   }
   move() {
     this.x -= this.vx;
